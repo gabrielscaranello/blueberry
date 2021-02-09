@@ -1,15 +1,23 @@
 {
-  "name": "blueberry",
+  "name": "gs-blueberry",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Javascript helper to call API services.",
+  "author": "Gabriel Scaranello <gabrieljscaranello@gmail.com>",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielscaranello/blueberry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gabrielscaranello/blueberry/issues"
+  },
+  "homepage": "https://github.com/gabrielscaranello/blueberry#readme",
   "scripts": {
     "test": "jest",
     "test:staged": "jest"
   },
-  "keywords": [],
-  "author": "Gabriel Scaranello <gabrieljscaranello@gmail.com>",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.25",
