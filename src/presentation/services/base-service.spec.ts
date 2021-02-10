@@ -1,5 +1,5 @@
-import { MissingResourceError } from '../errors/missign-resource-error'
-import { Service } from '../protocols/service'
+import { MissingResourceError } from '../errors'
+import { Service } from '../protocols'
 import { BaseService } from './base-service'
 
 const makeSutWithNoResource = (): Service => {
