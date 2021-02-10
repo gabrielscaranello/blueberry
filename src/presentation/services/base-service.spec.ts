@@ -1,7 +1,8 @@
 import { MissingResourceError } from '../errors/missign-resource-error'
+import { Service } from '../protocols/service'
 import { BaseService } from './base-service'
 
-const makeSutWithNoResource = (): BaseService => {
+const makeSutWithNoResource = (): Service => {
   class UserService extends BaseService {}
   return new UserService()
 }
