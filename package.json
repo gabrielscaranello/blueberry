@@ -4,8 +4,9 @@
   "description": "A Javascript helper to call API services.",
   "author": "Gabriel Scaranello <gabrieljscaranello@gmail.com>",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "keywords": [],
+  "files": ["src", "lib"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielscaranello/blueberry.git"
@@ -20,7 +21,8 @@
     "test:unit": "npm test -- --watch -c jest-unit.config.js",
     "test:integration": "npm test -- --watch -c jest-integration.config.js",
     "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "npm test -- --coverage"
+    "test:ci": "npm test -- --coverage",
+    "build": "tsc -p ."
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
