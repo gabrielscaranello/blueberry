@@ -1,9 +1,13 @@
 import { MissingResourceError } from '../errors'
 import { Service } from '../protocols'
+import { Model } from '../protocols/model'
 import { BaseService } from './base-service'
 
 const makeSutWithNoResource = (): Service => {
-  class UserService extends BaseService {}
+  interface User extends Model {
+    name: string
+  }
+  class UserService extends BaseService<User> {}
   return new UserService()
 }
 
