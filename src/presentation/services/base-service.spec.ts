@@ -1,3 +1,4 @@
+import { MissingResourceError } from '../errors/missign-resource-error'
 import { BaseService } from './base-service'
 
 const makeSutWithNoResource = (): BaseService => {
@@ -7,6 +8,8 @@ const makeSutWithNoResource = (): BaseService => {
 
 describe('Base Service Class', () => {
   test('should instance of base service returns erro if no resource is provided', () => {
-    expect(() => makeSutWithNoResource()).toThrowError()
+    expect(() => makeSutWithNoResource()).toThrowError(
+      new MissingResourceError()
+    )
   })
 })
