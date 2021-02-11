@@ -2,10 +2,17 @@ import { MissingResourceError } from '../errors'
 import { Service } from '../protocols'
 import { Model } from '../../domain/models'
 import { BaseService } from './base-service'
+import { HttpResponse } from '../../domain/protocols'
 
 interface User extends Model {
   name: string
 }
+
+jest.mock('axios', () => ({
+  async get (): Promise<HttpResponse> {
+    return await Promise.resolve({ status: 200, data: { id: 1 } })
+  }
+}))
 
 const makeSut = (): Service<User> => {
   class UserService extends BaseService<User> {
