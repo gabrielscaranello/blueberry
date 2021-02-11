@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { HttpClient } from '../../domain/protocols/http-client'
-import { HttpResponse } from '../../domain/protocols/http-response'
+import { HttpClient, HttpResponse } from '../../domain/protocols'
 
 export class AxiosAdapter implements HttpClient {
   async get (url: string): Promise<HttpResponse> {

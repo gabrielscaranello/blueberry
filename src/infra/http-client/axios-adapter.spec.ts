@@ -1,5 +1,5 @@
 import { AxiosAdapter } from './axios-adapter'
-import { HttpResponse } from '../../domain/protocols/http-response'
+import { HttpResponse } from '../../domain/protocols'
 
 jest.mock('axios', () => ({
   async get (): Promise<HttpResponse> {
