@@ -6,7 +6,10 @@
   "license": "MIT",
   "main": "lib/index.js",
   "keywords": [],
-  "files": ["src", "lib"],
+  "files": [
+    "src",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielscaranello/blueberry.git"
@@ -39,5 +42,8 @@
     "lint-staged": "^10.5.4",
     "ts-jest": "^26.5.1",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }
