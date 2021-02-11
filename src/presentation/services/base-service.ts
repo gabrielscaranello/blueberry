@@ -1,6 +1,6 @@
 import { MissingResourceError } from '../errors'
 import { Service } from '../protocols'
-import { Form as BaseForm, Model as BaseModel } from '../protocols/model'
+import { Form as BaseForm, Model as BaseModel } from '../../domain/models'
 
 export abstract class BaseService<
   M extends BaseModel,

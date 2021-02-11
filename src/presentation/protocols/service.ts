@@ -1,4 +1,4 @@
-import { Model } from './model'
+import { Model } from '../../domain/models'
 
 export interface Service<M extends Model> {
   readonly resource: string

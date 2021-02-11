@@ -1,6 +1,6 @@
 import { MissingResourceError } from '../errors'
 import { Service } from '../protocols'
-import { Model } from '../protocols/model'
+import { Model } from '../../domain/models'
 import { BaseService } from './base-service'
 
 interface User extends Model {
