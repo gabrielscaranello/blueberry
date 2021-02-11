@@ -29,9 +29,9 @@ describe('Base Service Class', () => {
     )
   })
 
-  test('should BaseService returns Model with related id in find method', () => {
+  test('should BaseService returns Model with related id in find method', async () => {
     const sut = makeSut()
-    const result = sut.find(1)
+    const result = await sut.find(1)
     expect(result).toBeTruthy()
     expect(result.id).toBe(1)
   })

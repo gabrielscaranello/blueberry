@@ -15,7 +15,7 @@ export abstract class BaseService<
     if (!this.resource) throw new MissingResourceError()
   }
 
-  find (id: string | number): M {
-    return ({ id } as unknown) as M
+  async find (id: string | number): Promise<M> {
+    return await Promise.resolve(({ id } as unknown) as M)
   }
 }
