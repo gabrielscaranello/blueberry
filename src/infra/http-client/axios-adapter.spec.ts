@@ -2,6 +2,7 @@ import { AxiosAdapter } from './axios-adapter'
 import { HttpResponse } from '../../domain/protocols'
 
 jest.mock('axios', () => ({
+  defaults: { baseURL: 'https://any.url' },
   async get (): Promise<HttpResponse> {
     return await Promise.resolve({ status: 200, data: {} })
   }

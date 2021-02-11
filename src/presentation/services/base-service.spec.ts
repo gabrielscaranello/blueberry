@@ -9,6 +9,7 @@ interface User extends Model {
 }
 
 jest.mock('axios', () => ({
+  defaults: { baseURL: 'https://any.url' },
   async get (): Promise<HttpResponse> {
     return await Promise.resolve({ status: 200, data: { id: 1 } })
   }
