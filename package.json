@@ -6,10 +6,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "keywords": [],
-  "files": [
-    "src",
-    "lib"
-  ],
+  "files": ["src", "lib"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielscaranello/blueberry.git"
@@ -19,8 +16,8 @@
   },
   "homepage": "https://github.com/gabrielscaranello/blueberry#readme",
   "scripts": {
-    "test": "jest --passWithNoTests --silent --noStackTrace",
-    "test:verbose": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit.config.js",
     "test:integration": "npm test -- --watch -c jest-integration.config.js",
     "test:staged": "npm test -- --findRelatedTests",
