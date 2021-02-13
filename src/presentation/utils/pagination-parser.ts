@@ -12,11 +12,13 @@ const LARAVEL_PAGINATION_CONFIG = {
 // Default is for laravel
 const PAGINATION_CONFIG = LARAVEL_PAGINATION_CONFIG
 
-export function paginationParse<T extends Model> (pl: any): PaginatedResult<T> {
-  const data = pl[PAGINATION_CONFIG.data]
-  const lastPage = pl[PAGINATION_CONFIG.lastPage]
-  const limit = pl[PAGINATION_CONFIG.limit]
-  const page = pl[PAGINATION_CONFIG.page]
-  const total = pl[PAGINATION_CONFIG.total]
-  return { data, lastPage, limit, page, total }
+export function paginationParser<T extends Model> (
+  payload: any
+): PaginatedResult<T> {
+  const data = payload[PAGINATION_CONFIG.data]
+  const lastPage = parseInt(payload[PAGINATION_CONFIG.lastPage])
+  const limit = parseInt(payload[PAGINATION_CONFIG.limit])
+  const page = parseInt(payload[PAGINATION_CONFIG.page])
+  const total = parseInt(payload[PAGINATION_CONFIG.total])
+  return { lastPage, limit, page, total, data }
 }

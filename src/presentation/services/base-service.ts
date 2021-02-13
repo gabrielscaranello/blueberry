@@ -5,7 +5,7 @@ import { HttpClient } from '../../domain/protocols'
 import { AxiosAdapter } from '../../infra/http-client/axios-adapter'
 import { URLBuilder as URLBuilderImpl } from './url-builder'
 import { getDefaultQueryValues } from '../utils/default-query-values'
-import { paginationParse } from '../utils/pagination-parser'
+import { paginationParser } from '../utils/pagination-parser'
 
 export abstract class BaseService<
   M extends BaseModel,
@@ -41,7 +41,7 @@ export abstract class BaseService<
   async paginate (page: number, limit: number): Promise<PaginatedResult<M>> {
     this._query = { ...this._query, page, limit }
     const { data } = await this.client.get(this.uri)
-    return paginationParse(data)
+    return paginationParser(data)
   }
 
   private get uri (): string {
