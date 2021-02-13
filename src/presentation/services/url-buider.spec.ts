@@ -32,4 +32,11 @@ describe('URL Builder', () => {
     })
     expect(sut.handler()).toBe('users?name=any%20name&age=18')
   })
+
+  test('should returns error if invalid queries is provided', () => {
+    const sut = new URLBuilder('users', {
+      query: [{ 'invalid query': 'any name' }]
+    })
+    expect(() => sut.handler()).toThrowError(new Error('Invalid query param'))
+  })
 })
