@@ -19,4 +19,9 @@ describe('URL Builder', () => {
     const sut = new URLBuilder('users', { params: [1] })
     expect(sut.handler()).toBe('users/1')
   })
+
+  test('should returns uri with page if page is provided', () => {
+    const sut = new URLBuilder('users', { page: 1 })
+    expect(sut.handler()).toBe('users?page=1')
+  })
 })
