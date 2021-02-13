@@ -14,7 +14,7 @@ export abstract class BaseService<
 > implements Service<M> {
   private readonly client: HttpClient
   private readonly urlBuilder: URLBuilder
-  private readonly _query: Query
+  private _query: Query
 
   get resource (): string {
     return ''
@@ -39,6 +39,7 @@ export abstract class BaseService<
   }
 
   async paginate (page: number, limit: number): Promise<PaginatedResult<M>> {
+    this._query = { ...this._query, page, limit }
     const { data } = await this.client.get(this.uri)
     return paginationParse(data)
   }
@@ -54,16 +55,6 @@ export abstract class BaseService<
 
   search (search: number | string): Service<M> {
     this._query.search = search
-    return this
-  }
-
-  page (page: number): Service<M> {
-    this._query.page = page
-    return this
-  }
-
-  limit (limit: number): Service<M> {
-    this._query.limit = limit
     return this
   }
 
