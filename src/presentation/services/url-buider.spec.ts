@@ -34,6 +34,17 @@ describe('URL Builder', () => {
     expect(sut.handler()).toBe('users?name=any%20name&age=18')
   })
 
+  test('should returns correct uri in handle if no query is provided', () => {
+    const sut = new URLBuilder('users')
+    expect(sut.handler({})).toBe('users')
+  })
+
+  test('should returns correct uri in handle if query is provided', () => {
+    const sut = new URLBuilder('users')
+    const query = { limit: 20, page: 1, search: 'any search' }
+    expect(sut.handler(query)).toBe('users?page=1&limit=20&search=any%20search')
+  })
+
   test('should returns error if invalid queries is provided', () => {
     const sut = new URLBuilder('users', {
       query: [{ 'invalid query': 'any name' }]
