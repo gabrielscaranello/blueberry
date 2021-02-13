@@ -19,8 +19,8 @@ describe('AxiosAdapter', () => {
   })
 
   test('should return an error if no baseURL is provided', async () => {
-    axios.defaults.baseURL = undefined
     await expect(() => {
+      axios.defaults.baseURL = undefined
       const sut = new AxiosAdapter()
       axios.defaults.baseURL = 'https://any.url'
       return sut
