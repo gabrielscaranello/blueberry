@@ -56,4 +56,13 @@ export abstract class BaseService<
     this._query.limit = limit
     return this
   }
+
+  query (field: string, value: number | string): Service<M> {
+    if (!this._query.query || !this._query.query.length) {
+      this._query.query = []
+    }
+
+    this._query.query.push({ [field]: value })
+    return this
+  }
 }
