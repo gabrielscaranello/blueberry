@@ -24,4 +24,9 @@ describe('URL Builder', () => {
     const sut = new URLBuilder('users', { page: 1 })
     expect(sut.handler()).toBe('users?page=1')
   })
+
+  test('should returns uri with limit if limit is provided', () => {
+    const sut = new URLBuilder('users', { limit: 10 })
+    expect(sut.handler()).toBe('users?limit=10')
+  })
 })
