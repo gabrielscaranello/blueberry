@@ -1,10 +1,11 @@
 import { MissingResourceError } from '../errors'
-import { Service, Query, URLBuilder } from '../protocols'
+import { Service, Query, URLBuilder, PaginatedResult } from '../protocols'
 import { Form as BaseForm, Model as BaseModel } from '../../domain/models'
 import { HttpClient } from '../../domain/protocols'
 import { AxiosAdapter } from '../../infra/http-client/axios-adapter'
 import { URLBuilder as URLBuilderImpl } from './url-builder'
 import { getDefaultQueryValues } from '../utils/default-query-values'
+import { paginationParse } from '../utils/pagination-parser'
 
 export abstract class BaseService<
   M extends BaseModel,
@@ -30,6 +31,16 @@ export abstract class BaseService<
     this.params(id)
     const { data } = await this.client.get(this.uri)
     return data
+  }
+
+  async all (): Promise<M[]> {
+    const { data } = await this.client.get(this.uri)
+    return data
+  }
+
+  async paginate (page: number, limit: number): Promise<PaginatedResult<M>> {
+    const { data } = await this.client.get(this.uri)
+    return paginationParse(data)
   }
 
   private get uri (): string {
