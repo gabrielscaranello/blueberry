@@ -3,8 +3,9 @@ import { Service } from '../protocols'
 import { Form as BaseForm, Model as BaseModel } from '../../domain/models'
 import { HttpClient } from '../../domain/protocols'
 import { AxiosAdapter } from '../../infra/http-client/axios-adapter'
-import { URLBuilder } from '../protocols/url-builder'
+import { Query, URLBuilder } from '../protocols/url-builder'
 import { URLBuilder as URLBuilderImpl } from './url-builder'
+import { getDefaultQueryValues } from '../utils/default-query-values'
 
 export abstract class BaseService<
   M extends BaseModel,
@@ -13,6 +14,7 @@ export abstract class BaseService<
 > implements Service<M> {
   private readonly client: HttpClient
   private readonly urlBuilder: URLBuilder
+  private readonly _query: Query
 
   get resource (): string {
     return ''
@@ -22,14 +24,21 @@ export abstract class BaseService<
     if (!this.resource) throw new MissingResourceError()
     this.client = new AxiosAdapter()
     this.urlBuilder = new URLBuilderImpl(this.resource)
+    this._query = getDefaultQueryValues()
   }
 
   async find (id: string | number): Promise<M> {
-    const { data } = await this.client.get(`${this.uri}/${id}`)
+    this.params(id)
+    const { data } = await this.client.get(this.uri)
     return data
   }
 
   private get uri (): string {
-    return this.urlBuilder.handler()
+    return this.urlBuilder.handler(this._query)
+  }
+
+  params (param: number | string): Service<M> {
+    this._query.params?.push(param)
+    return this
   }
 }
