@@ -14,4 +14,9 @@ describe('URL Builder', () => {
     const sut = new URLBuilder('users', {})
     expect(sut.handler()).toBe('users')
   })
+
+  test('should returns uri with param if param is provided', () => {
+    const sut = new URLBuilder('users', { params: [1] })
+    expect(sut.handler()).toBe('users/1')
+  })
 })
