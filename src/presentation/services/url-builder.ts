@@ -10,7 +10,8 @@ export class URLBuilder implements URLBuilderI {
     this.query = query
   }
 
-  handler (): string {
+  handler (query?: Query): string {
+    if (query) this.query = query
     this._includeParam()
     const qs = this._makeQuery()
     if (!qs) return `${this.uri}`
