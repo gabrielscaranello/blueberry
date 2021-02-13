@@ -1,3 +1,4 @@
+import { InvalidQueryError } from '../errors/invalid-query-error'
 import { Query, URLBuilder as URLBuilderI } from '../protocols/url-builder'
 
 export class URLBuilder implements URLBuilderI {
@@ -38,7 +39,7 @@ export class URLBuilder implements URLBuilderI {
     const params = { ...this._getQuery(), ...this._getAditionals() }
     const queryString = Object.keys(params)
       .map(key => {
-        if (key.includes(' ')) throw new Error('Invalid query param')
+        if (key.includes(' ')) throw new InvalidQueryError()
         const isValid =
           Object.prototype.hasOwnProperty.call(params, key) && !!params[key]
 

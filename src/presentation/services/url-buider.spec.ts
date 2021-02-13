@@ -1,3 +1,4 @@
+import { InvalidQueryError } from '../errors/invalid-query-error'
 import { URLBuilder } from './url-builder'
 
 describe('URL Builder', () => {
@@ -37,6 +38,6 @@ describe('URL Builder', () => {
     const sut = new URLBuilder('users', {
       query: [{ 'invalid query': 'any name' }]
     })
-    expect(() => sut.handler()).toThrowError(new Error('Invalid query param'))
+    expect(() => sut.handler()).toThrowError(new InvalidQueryError())
   })
 })
