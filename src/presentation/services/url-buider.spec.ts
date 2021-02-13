@@ -2,11 +2,11 @@
 import { URLBuilder } from './url-builder'
 
 // const DEAFULT_QUERY: Query = {
-//   query: [{ any_param: 'any_value' }],
+//   query: [{ any_param: 'any value' }],
 //   page: 1,
 //   limit: 10,
-//   params: ['any_param'],
-//   search: 'any_search'
+//   params: ['any param'],
+//   search: 'any search'
 // }
 
 describe('URL Builder', () => {
@@ -28,5 +28,10 @@ describe('URL Builder', () => {
   test('should returns uri with limit if limit is provided', () => {
     const sut = new URLBuilder('users', { limit: 10 })
     expect(sut.handler()).toBe('users?limit=10')
+  })
+
+  test('should returns uri with search if search is provided', () => {
+    const sut = new URLBuilder('users', { search: 'any search' })
+    expect(sut.handler()).toBe('users?search=any%20search')
   })
 })
