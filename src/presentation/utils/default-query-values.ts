@@ -1,4 +1,4 @@
-import { Query } from '../protocols/url-builder'
+import { Query } from '../protocols'
 
 export function getDefaultQueryValues (): Query {
   return {
