@@ -1,9 +1,8 @@
 import { MissingResourceError } from '../errors'
-import { Service } from '../protocols'
+import { Service, Query, URLBuilder } from '../protocols'
 import { Form as BaseForm, Model as BaseModel } from '../../domain/models'
 import { HttpClient } from '../../domain/protocols'
 import { AxiosAdapter } from '../../infra/http-client/axios-adapter'
-import { Query, URLBuilder } from '../protocols/url-builder'
 import { URLBuilder as URLBuilderImpl } from './url-builder'
 import { getDefaultQueryValues } from '../utils/default-query-values'
 

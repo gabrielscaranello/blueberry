@@ -1,5 +1,5 @@
 import { InvalidQueryError } from '../errors'
-import { Query, URLBuilder as URLBuilderI } from '../protocols/url-builder'
+import { Query, URLBuilder as URLBuilderI } from '../protocols'
 
 export class URLBuilder implements URLBuilderI {
   uri: string

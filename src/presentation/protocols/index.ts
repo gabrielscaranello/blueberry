@@ -1,2 +1,3 @@
+export * from './query'
 export * from './service'
-export * from './service-config'
+export * from './url-builder'
