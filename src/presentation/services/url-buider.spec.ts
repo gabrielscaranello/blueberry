@@ -34,4 +34,11 @@ describe('URL Builder', () => {
     const sut = new URLBuilder('users', { search: 'any search' })
     expect(sut.handler()).toBe('users?search=any%20search')
   })
+
+  test('should returns uri with queries if many queries is provided', () => {
+    const sut = new URLBuilder('users', {
+      query: [{ name: 'any name' }, { age: 18 }]
+    })
+    expect(sut.handler()).toBe('users?name=any%20name&age=18')
+  })
 })
