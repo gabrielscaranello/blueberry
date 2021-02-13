@@ -41,4 +41,19 @@ export abstract class BaseService<
     this._query.params?.push(param)
     return this
   }
+
+  search (search: number | string): Service<M> {
+    this._query.search = search
+    return this
+  }
+
+  page (page: number): Service<M> {
+    this._query.page = page
+    return this
+  }
+
+  limit (limit: number): Service<M> {
+    this._query.limit = limit
+    return this
+  }
 }
