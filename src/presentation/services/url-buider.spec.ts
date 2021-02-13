@@ -1,4 +1,4 @@
-import { InvalidQueryError } from '../errors/invalid-query-error'
+import { InvalidQueryError } from '../errors'
 import { URLBuilder } from './url-builder'
 
 describe('URL Builder', () => {

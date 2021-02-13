@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { AxiosAdapter } from './axios-adapter'
 import { HttpResponse } from '../../domain/protocols'
+import { NoBaseUrlError } from '../../presentation/errors'
 
 jest.mock('axios', () => ({
   defaults: { baseURL: 'https://any.url' },
@@ -23,6 +24,6 @@ describe('AxiosAdapter', () => {
       const sut = new AxiosAdapter()
       axios.defaults.baseURL = 'https://any.url'
       return sut
-    }).toThrowError(new Error('Please provided an base URL'))
+    }).toThrowError(new NoBaseUrlError())
   })
 })
