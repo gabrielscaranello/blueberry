@@ -2,9 +2,9 @@ import { Query, URLBuilder as URLBuilderI } from '../protocols/url-builder'
 
 export class URLBuilder implements URLBuilderI {
   uri: string
-  query: Query
+  query?: Query
 
-  constructor (uri: string, query: Query) {
+  constructor (uri: string, query?: Query) {
     this.uri = uri
     this.query = query
   }
@@ -17,7 +17,7 @@ export class URLBuilder implements URLBuilderI {
   }
 
   _includeParam (): URLBuilder {
-    const { params } = this.query
+    const { params } = this.query ?? {}
     if (!params?.length) return this
 
     params.forEach(param => {
@@ -28,7 +28,7 @@ export class URLBuilder implements URLBuilderI {
   }
 
   _getAditionals (): Record<string, number | string | unknown> {
-    const { page, limit, search } = this.query
+    const { page, limit, search } = this.query ?? {}
     return { page, limit, search }
   }
 
@@ -50,7 +50,7 @@ export class URLBuilder implements URLBuilderI {
 
   _getQuery (): Record<string, number | string | unknown> {
     let params = {}
-    if (!this.query.query) return params
+    if (!this.query || !this.query.query) return params
 
     this.query.query.forEach(query => {
       const [key] = Object.keys(query)

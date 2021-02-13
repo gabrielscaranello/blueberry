@@ -8,7 +8,7 @@ export interface Query {
 
 export interface URLBuilder {
   uri: string
-  query: Query
+  query?: Query
 
   handler: () => string
   _includeParam: () => URLBuilder
