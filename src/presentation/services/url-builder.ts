@@ -17,7 +17,8 @@ export class URLBuilder implements URLBuilderI {
   }
 
   _includeParam (): URLBuilder {
-    const { params } = this.query ?? {}
+    if (!this.query) return this
+    const { params } = this.query
     if (!params?.length) return this
 
     params.forEach(param => {
@@ -28,7 +29,8 @@ export class URLBuilder implements URLBuilderI {
   }
 
   _getAditionals (): Record<string, number | string | unknown> {
-    const { page, limit, search } = this.query ?? {}
+    if (!this.query) return {}
+    const { page, limit, search } = this.query
     return { page, limit, search }
   }
 
