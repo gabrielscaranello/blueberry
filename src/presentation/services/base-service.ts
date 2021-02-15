@@ -41,7 +41,7 @@ export abstract class BaseService<
   async paginate (page: number, limit: number): Promise<PaginatedResult<M>> {
     this._query = { ...this._query, page, limit }
     const { data } = await this.client.get(this.uri)
-    return paginationParser(data)
+    return await paginationParser(data)
   }
 
   private get uri (): string {
