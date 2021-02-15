@@ -1,6 +1,6 @@
 {
   "name": "gs-blueberry",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Javascript helper to call API services.",
   "author": "Gabriel Scaranello <gabrieljscaranello@gmail.com>",
   "license": "MIT",
